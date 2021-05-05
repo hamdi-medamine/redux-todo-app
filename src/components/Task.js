@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { deleteTodo, updateTodo } from '../redux/actions';
+import { deleteTodo, toggleTask, updateTodo } from '../redux/actions';
 
 function TodoItem({ todo }) {
     const [editable, setEditable] = useState(false)
     const [name, setName] = useState(todo.name)
     let dispatch = useDispatch();
-    const [doneButton, setDoneButton] = useState(false);
+    
 
     const handleClick = () => {
-        setDoneButton(s => !s);
+        dispatch(toggleTask(todo.id));
       };
 
     return (
@@ -26,10 +26,10 @@ function TodoItem({ todo }) {
 
                         />
                         :
-                        <h4 style={{ background: doneButton ? "#00FF00" : "none"}}>{todo.name}</h4>}
+                        <h4 style={{ background: todo.isDone ? "#00FF00" : "none"}}>{todo.name}</h4>}
                 </div>
                 <button  className="btn btn-primary m-2" onClick={handleClick}>
-            {doneButton ? "Done" : "Undone"}</button>
+            {todo.isDone ? "Done" : "Undone"}</button>
                 <button className="btn btn-primary m-2"
                     onClick={() => {
                         dispatch(updateTodo({

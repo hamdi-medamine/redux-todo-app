@@ -1,6 +1,8 @@
 export const ADD_TODO = "ADD_TODO";
 export const DELETE_TODO = "DELETE_TODO";
 export const UPDATE_TODO = "UPDATE_TODO";
+export const TOGGLE_TASK="TOGGLE_TASK"
+export const TOGGLE_FILTER="TOGGLE_FILTER"
 
 
 
@@ -24,5 +26,19 @@ export function updateTodo(todo) {
     return {
         type:UPDATE_TODO,
         payload: todo,
+    }
+}
+
+export function toggleTask(id) {
+    return{
+        type:TOGGLE_TASK,
+        payload:id
+    }
+}
+
+export function toggleFilter(filter){
+    return{
+        type: TOGGLE_FILTER,
+        payload:filter,
     }
 }

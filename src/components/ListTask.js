@@ -2,8 +2,8 @@ import React from 'react'
 import Task from './Task'
 import { useSelector } from 'react-redux'
 
-function TodoList() {
-    let todos = useSelector(state=>state);
+function TodoList({todos}) {
+    
 
     return (
         <div className="my-4">
